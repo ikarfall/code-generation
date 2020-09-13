@@ -1,0 +1,28 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+group 'org.codecagon'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor "com.google.auto.service:auto-service:1.0-rc7"
+    implementation "com.google.auto.service:auto-service:1.0-rc7"
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
+
+publishing {
+    publications {
+        codeGeneration(MavenPublication) {
+            from components.java
+        }
+    }
+}
